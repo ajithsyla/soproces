@@ -1,0 +1,9 @@
+.page-header .page-header-menu .hor-menu .navbar-nav>li>a{ color: #FFF !important;}
+.modal-dialog {
+    width: 300px;
+    /* margin: 30px auto; */
+    position: relative;
+    top: 150px !important;
+     left:0 !important;  
+    margin: 0 auto !important;
+}

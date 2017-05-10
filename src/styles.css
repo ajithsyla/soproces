@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+
+ @media (min-width:768px) {
+  .modal-dialog {
+    width: 300px;
+    position: relative;
+    top: 180px !important;
+    left:0 !important;  
+    margin: 0 auto !important;
+  }
+  .modal-body{
+    padding: 15px;
+  }
+}

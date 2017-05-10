@@ -1,0 +1,183 @@
+<div class="container margin-top-20">
+        <div class="row">
+            <div class="col-xs-12 col-sm-8 col-md-6">
+                <div class="serchmain">
+                    <div class="serrchbtn">
+                        <img src="assets/layouts/layout3/img/serch.png" data-toggle="modal" data-target="#myModal" />
+
+                    </div>
+                </div>
+                <div class="left_search">
+                    <div class="deferbtn">
+                        <button type="button" class="btn-default btn from-control">Defer</button>
+                    </div>
+                </div>
+                <div class="serchleft ">
+                    <select class="form-control" id="sel1" (change)="onSelect($event.target.value)">
+                        <option value="0">Select option</option>
+                        <option *ngFor="let posts of posts" value="{{posts.id }}">{{posts.title }} - {{posts.id }}</option>
+                    </select>
+                </div>
+                <div class="serchleft">
+                    <select class="form-control" id="sel1" (change)="onSelected($event.target.value)">
+                        <option>Select Action</option>
+                        <option *ngFor="let userId of userId">{{userId.id}}</option>
+                    </select>
+                </div>
+                <div class="serchapply hidden">
+                    <div class="applybtn">
+                        <button type="button" class="btn-primary btn from-control">Apply</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4 col-md-6">
+                <button type="button" class="btn-primary btn from-control pull-right">Print Report</button>
+            </div>
+        </div>
+  </div>
+  <div class="container">
+  <table class="table table-hover">
+    <thead>
+      <tr >
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let userId of userId">
+        <td >{{userId.id}}</td>
+        <td>{{userId.name}}</td>
+        <td>{{userId.body}}</td>
+      </tr>
+      
+    </tbody>
+  </table>
+</div>
+<div id="myModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <a class="close" data-dismiss="modal">&times;</a>
+                    <h4 class="modal-title">SEARCH CRITERIA</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="wraperpp">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5 class="no-margin"><strong>Location</strong></h5>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="checkbox checkbox-circle no-margin pull-right">
+                                    <input id="checkbox7" type="checkbox">
+                                    <label for="checkbox7">
+                                        Range
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <!--<select class="form-control" id="sel1">
+                                     <option *ngFor="let miltonLocation of miltonLocation">{{miltonLocation}}</option>
+                                </select>-->
+                                <!--<select class="form-control" id="sel1" (change)="onSelect($event.target.value)">
+                        <option value="0">Select option</option>
+                        <option *ngFor="let posts of posts" value="{{posts.id }}">{{posts.title }} - {{posts.id }}</option>
+                    </select>-->
+                            </div>
+                            <div class="col-md-6">
+
+                            </div>
+                        </div>
+                        <div class="row mg15">
+                            <div class="col-md-6">
+                                <h5 class="no-margin"><strong>Installers</strong></h5>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="checkbox checkbox-circle no-margin pull-right">
+                                    <input id="checkbox7" type="checkbox">
+                                    <label for="checkbox7">
+                                        Range
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mg15">
+                            <div class="col-md-12">
+                            <!--<select class="form-control" id="sel1">
+                                <option>Select Action</option>
+                                <option *ngFor="let userId of userId">{{userId.id}}</option>
+                            </select>-->
+                            </div>
+                           
+                        </div>
+                        <div class="row mg15">
+                            <div class="col-md-12">
+                                <h5 class="no-margin"><strong>Dates</strong></h5>
+                            </div>
+                            <div class="col-md-12 margin-top-15">
+                                <div class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2" for="email">From</label>
+                                        <div class="col-sm-10">
+                                            <input type="email" class="form-control" id="email">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-horizontal">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-2" for="email">To</label>
+                                        <div class="col-sm-10">
+                                            <input type="email" class="form-control" id="email">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="col-xs-4 col-md-4">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img src="assets/layouts/layout3/img/clear.png" width="20px" />
+                            </div>
+                            <div class="col-md-6">
+                                <a href="#"> Clear</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 col-md-4">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img src="assets/layouts/layout3/img/cros.png" width="20px" />
+                            </div>
+                            <div class="col-md-6">
+                                <a href="#">   Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-4 col-md-4">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <img src="assets/layouts/layout3/img/apply.png" width="20px" />
+                            </div>
+                            <div class="col-md-6">
+                                <a href="#">     Apply</a>
+                            </div>
+                        </div>
+                    </div>
+             
+                </div>
+
+            </div>
+
+        </div>
+</div>
+
