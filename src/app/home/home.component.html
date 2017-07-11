@@ -1,10 +1,9 @@
 <div class="container margin-top-20">
         <div class="row">
-            <div class="col-xs-12 col-sm-8 col-md-6">
+            <div class="col-xs-12 col-sm-8 col-md-10">
                 <div class="serchmain">
                     <div class="serrchbtn">
                         <img src="assets/layouts/layout3/img/serch.png" data-toggle="modal" data-target="#myModal" />
-
                     </div>
                 </div>
                 <div class="left_search">
@@ -12,25 +11,42 @@
                         <button type="button" class="btn-default btn from-control">Defer</button>
                     </div>
                 </div>
-                <div class="serchleft ">
-                    <select class="form-control" id="sel1" (change)="onSelect($event.target.value)">
-                        <option value="0">Select option</option>
-                        <option *ngFor="let posts of posts" value="{{posts.id }}">{{posts.title }} - {{posts.id }}</option>
-                    </select>
+                <div class="serchleft">
+                  <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select 
+                        <!--<span *ngFor="let count of selectdval">{{count}}</span>-->{{selectdval.length}}
+                        <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                         <button class="btn btn-primary custDone" (click)="servercall()">done</button>
+                          <hr class="divider">
+                            <li *ngFor="let p of posts"> <a href="#"><input type="checkbox" value={{p.id}}  (change)="onSelectval(p.id, $event)"  />{{p.id}}</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="serchleft" >
+                     <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Select {{selectdvale.length}}
+                        <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                         <button class="btn btn-primary custDone" (click)="servercall()">done</button>
+                          <hr class="divider">
+                            <li *ngFor="let userId of userId"> <a href="#"><input type="checkbox" value="{{userId.id}}/{{userId.title}}"  (change)="onSelectvale(userId, $event)"  />{{userId.id}}</a></li>
+                        </ul>
+                    </div>
                 </div>
                 <div class="serchleft">
-                    <select class="form-control" id="sel1" (change)="onSelected($event.target.value)">
-                        <option>Select Action</option>
-                        <option *ngFor="let userId of userId">{{userId.id}}</option>
-                    </select>
+                    <ng2-datepicker [options]="options" [(ngModel)]="date"></ng2-datepicker>
+                    <div><p>{{this.selectdval}}{{this.date.formatted | date:"yyyy/MM/dd"}}</p></div>
                 </div>
-                <div class="serchapply hidden">
+                
+                <div class="serchapply">
                     <div class="applybtn">
-                        <button type="button" class="btn-primary btn from-control">Apply</button>
+                        <button type="button" class="btn-primary btn from-control">Apply </button>
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-4 col-md-6">
+            <div class="col-xs-12 col-sm-4 col-md-2">
                 <button type="button" class="btn-primary btn from-control pull-right">Print Report</button>
             </div>
         </div>
@@ -45,18 +61,16 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let userId of userId">
-        <td >{{userId.id}}</td>
+      <tr *ngFor="let userId of selectdvale">
+        <td>{{userId.id}}</td>
         <td>{{userId.name}}</td>
         <td>{{userId.body}}</td>
       </tr>
-      
     </tbody>
   </table>
 </div>
 <div id="myModal" class="modal fade" role="dialog">
         <div class="modal-dialog">
-
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
@@ -107,10 +121,7 @@
                         </div>
                         <div class="row mg15">
                             <div class="col-md-12">
-                            <!--<select class="form-control" id="sel1">
-                                <option>Select Action</option>
-                                <option *ngFor="let userId of userId">{{userId.id}}</option>
-                            </select>-->
+                          
                             </div>
                            
                         </div>
