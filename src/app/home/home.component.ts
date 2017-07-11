@@ -3,39 +3,68 @@ import{ LoginService } from '../service/login.service';
 // import{ UserService } from '../users/user.service';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/observable';
-import 'rxjs/RX'
+
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent  {
 
-posts:Post[];
-userId:userId[];
+export class HomeComponent implements OnInit{
+    posts:Post[];
+    userId:userId[];
+    res:res[];
+    selectdval : Selectdval[] = [];
+    selectdvale:selectdvale[] = [];
+    date:Date[] = [];
 
-  //  implements OnInit , private userService:UserService
+//implements OnInit , private userService:UserService
  constructor(private loginService:LoginService, private http:Http) { 
-   this.loginService.getPosts().subscribe(posts => {this.posts=posts});
-  //  this.userService.getUser().subscribe(users => {this.users=users});
+
  }
-  // ngOnInit() {
-  // }
-onSelect(id){
+ ngOnInit(){
+    this.loginService.getPosts().subscribe(posts => {this.posts=posts});
+ }
+
+servercall(){
   // console.log(i);
-    //console.log(id);
-    return this.http.get('https://jsonplaceholder.typicode.com/posts?userId='+id)
+  let userId = this.selectdval.toString();
+    return this.http.get('https://jsonplaceholder.typicode.com/posts?userId='+userId)
      .map(userId => userId.json()).subscribe(userId => {this.userId=userId});
-     
 }
 
+  onSelectval(value, event){
+    if(event.target.checked){
+          this.selectdval.push(value);
+        }
+        else if (!event.target.checked){
+          let indexx = this.selectdval.indexOf(value);
+          this.selectdval.splice(indexx,1);
+        }
+        console.log(this.selectdval);
+  }
+  
+  onSelectvale(value, event){
+    if(event.target.checked){
+          this.selectdvale.push(value);
+        }
+        else if (!event.target.checked){
+          let indexx = this.selectdvale.indexOf(value);
+          this.selectdvale.splice(indexx,1);
+        }
+        console.log(this.selectdvale);
+  }
+  
 onSelected(val){
-  console.log(val);
+    console.log(val);
+    let str = val;
+    this.res = str.split("/");
+    console.log(this.res);
+  }
+
 }
 
-miltonLocation=["one","two","three"]
-}
 interface Post{
     id:number;
     title:string;
@@ -46,4 +75,15 @@ interface userId{
     title:string;
     userId:string;
     body:string;
+}
+interface res{
+
+}
+
+interface Selectdval{
+  id:number;
+}
+
+interface selectdvale{
+
 }
